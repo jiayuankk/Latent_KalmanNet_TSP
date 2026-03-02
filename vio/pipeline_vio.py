@@ -146,7 +146,9 @@ class VIOPipeline(nn.Module):
         x_prior_prev = x_init
         x_posterior_prev = x_init
 
-        # First latent observation from initial frame pair (use frame 0 twice)
+        # Initial latent observation: duplicate first frame since no t-1 exists.
+        # At t=0 the encoder receives (I_0, I_0); this yields a near-zero
+        # motion feature, which is the desired initialization for the filter.
         z_prev = self.encoder(images[:, 0], images[:, 0])
 
         # Storage

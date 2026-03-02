@@ -163,10 +163,10 @@ class ManifoldKalmanNet(nn.Module):
             Kalman gain of shape (B, state_dim, latent_dim).
         """
         # Normalize features
-        obs_diff = F.normalize(obs_diff, p=2, dim=-1, eps=1e-12)
-        obs_innov_diff = F.normalize(obs_innov_diff, p=2, dim=-1, eps=1e-12)
-        fw_evol_diff = F.normalize(fw_evol_diff, p=2, dim=-1, eps=1e-12)
-        fw_update_diff = F.normalize(fw_update_diff, p=2, dim=-1, eps=1e-12)
+        obs_diff = F.normalize(obs_diff, p=2, dim=-1, eps=1e-8)
+        obs_innov_diff = F.normalize(obs_innov_diff, p=2, dim=-1, eps=1e-8)
+        fw_evol_diff = F.normalize(fw_evol_diff, p=2, dim=-1, eps=1e-8)
+        fw_update_diff = F.normalize(fw_update_diff, p=2, dim=-1, eps=1e-8)
 
         # ---- Forward Flow ----
 

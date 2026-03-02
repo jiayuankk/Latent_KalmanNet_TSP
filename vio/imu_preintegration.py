@@ -28,7 +28,11 @@ class IMUPreintegrator(nn.Module):
     Additionally, velocity (3-D) is tracked separately.
 
     Args:
-        gravity: Gravity vector in the world frame, shape (3,).
+        gravity: Magnitude of gravitational acceleration (m/s²).
+                 The gravity vector is assumed to point along the negative
+                 z-axis of the world frame (z-up convention), i.e.,
+                 g = [0, 0, -gravity].  Adjust the sign or direction if
+                 using a different coordinate frame (e.g., NED).
         prop_cov: Whether to propagate covariance (for uncertainty).
         reset: Whether to reset the integrator after each use.
     """
